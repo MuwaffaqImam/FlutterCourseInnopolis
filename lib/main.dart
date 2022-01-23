@@ -37,18 +37,13 @@ class MyHomePage extends StatelessWidget {
 
   Widget myWidget() {
     return Container(
-      padding: const EdgeInsets.all(20),
-      color: Colors.blueAccent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
-          /*******************--[focus here 🧐]--*******************/
-          Text(
-            'Welcome to the Course',
-          ),
-          /*******************--[focus here 🧐]--*******************/
-        ],
+      padding: EdgeInsets.all(20),
+      child:
+      /*******************--[focus here 🧐]--*******************/
+      Text(
+        'Welcome to the Course',
       ),
+      /*******************--[focus here 🧐]--*******************/
     );
   }
 }

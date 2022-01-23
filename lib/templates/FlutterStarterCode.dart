@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  
-}
-
 /// this is your APP Main screen configuration
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
@@ -39,18 +35,13 @@ class MyHomePage extends StatelessWidget {
 
   Widget myWidget() {
     return Container(
-      padding: const EdgeInsets.all(20),
-      color: Colors.blueAccent,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: const <Widget>[
+      padding: EdgeInsets.all(20),
+      child:
           /*******************--[focus here 🧐]--*******************/
           Text(
-            'Welcome to the Course',
-          ),
-          /*******************--[focus here 🧐]--*******************/
-        ],
+        'Welcome to the Course',
       ),
+      /*******************--[focus here 🧐]--*******************/
     );
   }
 }
