@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -25,8 +26,8 @@ class MyHomePage extends StatelessWidget {
       backgroundColor: const Color(0xfff4f4f4),
       /*******************--[focus here 🧐]--*******************/
       appBar: AppBar(
-        leading: const Icon(Icons.android_sharp),
-        title: const Text('App Title'),
+        leading: const Icon(Icons.favorite),
+        title: const Text('Welcome Flutter'),
         backgroundColor: Colors.teal,
         elevation: 4,
       ),
@@ -37,13 +38,54 @@ class MyHomePage extends StatelessWidget {
 
   Widget myWidget() {
     return Container(
-      padding: EdgeInsets.all(20),
-      child:
-      /*******************--[focus here 🧐]--*******************/
-      Text(
-        'Welcome to the Course',
-      ),
-      /*******************--[focus here 🧐]--*******************/
+        padding: EdgeInsets.all(20),
+        child:
+            /*******************--[focus here 🧐]--*******************/
+
+            Container(
+              color: Colors.blueGrey,
+              height: 300,
+              padding: EdgeInsets.only(bottom: 16),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Icon(Icons.share, size: 50, color: Colors.cyan,),
+                  Icon(Icons.comment, size: 50, color: Colors.green,),
+                  Icon(Icons.favorite, size: 50, color: Colors.blue,),
+                  Icon(Icons.delete_outline_rounded, size: 50, color: Colors.red,),
+                ],
+              ),
+            )
+
+        /*******************--[focus here 🧐]--*******************/
+        );
+  }
+
+  Text textQuiz() {
+    return Text(
+      'Mul',
+      style: TextStyle(
+          color: Colors.cyan,
+          backgroundColor: Colors.yellow,
+          fontSize: 50,
+          fontFamily: 'casual',
+          fontStyle: FontStyle.italic),
+    );
+  }
+
+  Text textExample() {
+    return Text(
+      "I am a text",
+      style: TextStyle(
+          fontSize: 40,
+          color: Colors.blue,
+          fontFamily: 'monospace',
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w900,
+          letterSpacing: 4,
+          backgroundColor: Colors.black12),
     );
   }
 }

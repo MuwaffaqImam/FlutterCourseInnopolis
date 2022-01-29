@@ -41,7 +41,21 @@ class MyHomePage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child:
         /*******************--[focus here 🧐]--*******************/
-        Text("hello Course")
+
+
+        Text("Hello iOS, I am Flutter")
+
+
+
+
+
+
+
+
+
+
+
+
 
       /*******************--[focus here 🧐]--*******************/
     );

@@ -203,6 +203,21 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
+
+  Container centerContainerQuiz() {
+    return Container(
+      color: Colors.yellow,
+      height: 400,
+      child: Center(
+        child: Icon(
+          Icons.done,
+          size: 100,
+        ),
+      ),
+    );
+  }
+
+
   Container containerQuiz() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 16, horizontal: 30),
