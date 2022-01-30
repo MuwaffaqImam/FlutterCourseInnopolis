@@ -40,15 +40,15 @@ class LAb1HomePage extends StatelessWidget {
       child: Column(
         children: [
           /*******************--[focus here 🧐]--*******************/
-          SizedBox(height: 20,),
+          SizedBox(height: 25,),
           exercise1(),
-          SizedBox(height: 20,),
+          SizedBox(height: 25,),
           exercise2(),
-          SizedBox(height: 20,),
+          SizedBox(height: 25,),
           exercise3(),
-          SizedBox(height: 20,),
+          SizedBox(height: 25,),
           exercise4(),
-          SizedBox(height: 20,),
+          SizedBox(height: 25,),
           exercise5(),
           /*******************--[focus here 🧐]--*******************/
         ],
