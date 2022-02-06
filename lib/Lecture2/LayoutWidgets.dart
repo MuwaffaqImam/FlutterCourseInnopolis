@@ -31,70 +31,98 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.teal,
         elevation: 4,
       ),
-      body: myWidget(),
+      body: wrapQuiz(),
       /*******************--[focus here 🧐]--*******************/
     );
   }
 
-  Widget myWidget() {
+  Widget wrapQuiz() {
     return Container(
       padding: EdgeInsets.all(20),
       child:
           /*******************--[focus here 🧐]--*******************/
-          aspectRationExample(),
+      Wrap(
+        spacing: 10,
+        children:[
+        Image.network(
+          "https://wallpaperaccess.com/full/428690.jpg",
+          height: 130,
+          width: 150,
+          fit: BoxFit.cover,
+        ),
+        Image.network(
+          "https://wallpaperaccess.com/full/428690.jpg",
+          height: 130,
+          width: 150,
+          fit: BoxFit.cover,
+        ),
+        Image.network(
+          "https://wallpaperaccess.com/full/428690.jpg",
+          height: 130,
+          width: 150,
+          fit: BoxFit.cover,
+        ),
+        Image.network(
+          "https://wallpaperaccess.com/full/428690.jpg",
+          height: 130,
+          width: 150,
+          fit: BoxFit.cover,
+        ),
+        ]
+      ),
+
 
       /*******************--[focus here 🧐]--*******************/
     );
   }
 
-  Column aspectRationExample() {
-    return Column(
-      children: [
-        AspectRatio(
-          aspectRatio: 16 / 9,
-          child: Image.network(
-            "https://wallpaperaccess.com/full/428690.jpg",
-            height: 300,
-            fit: BoxFit.cover,
-          ),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Text(
-            'Sunrise',
-            style: TextStyle(
-                fontSize: 50, color: Colors.black, fontFamily: "cursive"),
-          ),
-        )
-      ],
-    );
-  }
-
-  Container stackQuiz() {
+  Widget stackQuiz() {
     return Container(
-      height: 300,
+      height: 200,
+      width: 300,
       child: Stack(
-        fit: StackFit.loose,
+        fit: StackFit.passthrough,
         children: [
           Image.network(
             "https://wallpaperaccess.com/full/428690.jpg",
-            height: 300,
             fit: BoxFit.cover,
           ),
           Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.bottomLeft,
             child: Text(
               'Sunrise',
               style: TextStyle(
-                  fontSize: 50,
-                  color: Colors.white,
-                  backgroundColor: Colors.black38),
+                  fontSize: 50, color: Colors.white, fontFamily: "cursive",backgroundColor: Colors.black45),
             ),
           )
         ],
       ),
     );
   }
+
+  Widget aspectRationExample() {
+    return Stack(
+      children: [
+        AspectRatio(
+          aspectRatio: 16/9,
+          child: Image.network(
+            "https://wallpaperaccess.com/full/428690.jpg",
+            height: 300,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          'Sunrise',
+          style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+              backgroundColor: Colors.black38),
+        )
+      ],
+    );
+  }
+
+
 
   Container wrapExample() {
     return Container(
