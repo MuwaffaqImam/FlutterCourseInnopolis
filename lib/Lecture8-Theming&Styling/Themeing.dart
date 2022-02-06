@@ -1,4 +1,5 @@
-import 'package:courses_codes/Lecture6/style.dart';
+
+import 'package:courses_codes/Lecture8-Theming&Styling/style.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
