@@ -28,7 +28,7 @@ class MyHomePage extends StatelessWidget {
             style: TextStyle(fontFamily: 'casual'),
           ),
           /*******************--[focus here 🧐]--*******************/
-          elevation: 4.0,
+          elevation: 0.0,
         ),
         body: ListView(
           children: <Widget>[
