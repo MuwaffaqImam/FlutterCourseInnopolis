@@ -27,12 +27,10 @@ class MyHomePage extends StatelessWidget {
             'Flower Shop',
             style: TextStyle(fontFamily: 'casual'),
           ),
-          /*******************--[focus here 🧐]--*******************/
           elevation: 0.0,
         ),
         body: ListView(
           children: <Widget>[
-            /*******************--[focus here 🧐]--*******************/
             flowerDetails(context),
           ],
         ));

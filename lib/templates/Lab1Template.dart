@@ -50,6 +50,8 @@ class LAb1HomePage extends StatelessWidget {
           exercise4(),
           SizedBox(height: 25,),
           exercise5(),
+          SizedBox(height: 25,),
+          exercise6(),
           /*******************--[focus here 🧐]--*******************/
         ],
       ),
@@ -83,6 +85,11 @@ class LAb1HomePage extends StatelessWidget {
   }
 
   Widget exercise5() {
+    return FlutterLogo(
+      size: 100,
+    );
+  }
+  Widget exercise6() {
     return FlutterLogo(
       size: 100,
     );

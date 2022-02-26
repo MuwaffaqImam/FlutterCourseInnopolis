@@ -50,6 +50,8 @@ class LAb1HomePage extends StatelessWidget {
           exercise4(),
           SizedBox(height: 20,),
           exercise5(),
+          SizedBox(height: 20,),
+          exercise6(),
           /*******************--[focus here 🧐]--*******************/
         ],
       ),
@@ -75,7 +77,7 @@ class LAb1HomePage extends StatelessWidget {
   Widget exercise2() {
     return Icon(
       Icons.share_sharp,
-      size: 200,
+      size: 100,
       color: Colors.blue,
       textDirection: TextDirection.rtl,
     );
@@ -127,5 +129,30 @@ class LAb1HomePage extends StatelessWidget {
         side: BorderSide(color: Colors.amber,width: 2)
       ),
     );
+  }
+
+
+  /// hint instead of usr Border() not Border.all()
+  Widget exercise6() {
+    return Container(
+        height: 300,
+        width: 300,
+        decoration: BoxDecoration(
+            color: Colors.yellow,
+            border: Border(
+              top:    BorderSide(width: 16.0, color: Colors.blue),
+              bottom: BorderSide(width: 16.0, color: Colors.red),
+              right: BorderSide(width:  16.0, color: Colors.deepPurple),
+              left:  BorderSide(width:  16.0, color: Colors.indigo),
+            )),
+        padding: EdgeInsets.all(16),
+        margin: EdgeInsets.all(16),
+        child: Padding(
+          padding:
+          const EdgeInsets.symmetric(vertical: 50, horizontal: 50),
+          child: Center(
+            child: Icon(Icons.warning,size: 60,),
+          ),
+        ));
   }
 }

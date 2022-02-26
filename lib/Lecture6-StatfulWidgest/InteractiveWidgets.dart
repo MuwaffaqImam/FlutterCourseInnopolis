@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
           title: const Text('Flutter course'),
           elevation: 4,
         ),
-        body: counterApp()
+        body: counterQuiz()
     );
   }
 
@@ -80,6 +80,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
+  Center counterQuiz() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          InkWell(onTap: (){
+            setState(() {
+              counter += 1;
+            });
+          },child: Icon(Icons.thumb_up,size: 100,color: Colors.blue,)),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              '$counter',
+              style: TextStyle(
+                  fontSize: 50,
+                  color: counter >= 10 ? Colors.red : Colors.black),
+            ),
+          ),
+          InkWell(onTap: (){
+            setState(() {
+              counter -= 1;
+            });
+          },child: Icon(Icons.thumb_down,size: 100, color: Colors.red,)),
+        ],
+      ),
+    );
+  }
+
 
   Column animatedContainer() {
     return Column(

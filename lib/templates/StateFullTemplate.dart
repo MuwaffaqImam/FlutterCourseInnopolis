@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+void main()=> runApp(StatefulWidgetTemplate());
+
+
 class StatefulWidgetTemplate extends StatefulWidget {
   const StatefulWidgetTemplate({Key? key}) : super(key: key);
 
@@ -10,6 +13,11 @@ class StatefulWidgetTemplate extends StatefulWidget {
 class _StatefulWidgetTemplateState extends State<StatefulWidgetTemplate> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Text('Hello')
+      ),
+    );
   }
 }
