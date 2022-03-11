@@ -23,6 +23,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool isOpened=true;
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -40,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: EdgeInsets.all(20),
         duration: Duration(milliseconds: 450),
         width: screenWidth,
-        height:  screenHeight,
+        height: isOpened ? screenHeight : 60, // to 0 when click on it, to screen height when also click on it
         color: Colors.indigo,
         child: Stack(
           children: [
@@ -48,16 +50,29 @@ class _MyHomePageState extends State<MyHomePage> {
               height: 60,
               padding: EdgeInsets.symmetric(horizontal: 16),
               color: Colors.yellow,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                      child: Text(
-                        'Click to Expand',
-                        style: TextStyle(fontSize: 18),
-                      )),
-                  Icon(Icons.keyboard_arrow_down),
-                ],
+              child: InkWell(
+                onTap: (){
+                  setState(() {
+                    isOpened = !isOpened;
+                  });
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                        child: Text(
+                          'Click to Expand',
+                          style: TextStyle(fontSize: 18),
+                        )),
+                    Icon(
+                      isOpened
+                          ?
+                        Icons.keyboard_arrow_up
+                          :
+                      Icons.keyboard_arrow_down
+                    ),
+                  ],
+                ),
               ),
             ),
             Padding(

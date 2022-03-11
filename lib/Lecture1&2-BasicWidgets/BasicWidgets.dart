@@ -31,7 +31,15 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.teal,
         elevation: 4,
       ),
-      body: myWidget(),
+      body: Column(
+        children: [
+          myWidget(),
+          textWidgetQuiz(),
+          iconQuizSolution(),
+          elevatedButtonQuiz(),
+          iconButton(),
+        ],
+      ),
       /*******************--[focus here 🧐]--*******************/
     );
   }
@@ -41,22 +49,7 @@ class MyHomePage extends StatelessWidget {
         padding: EdgeInsets.all(20),
         child:
         /*******************--[focus here 🧐]--*******************/
-
-
         Text("Hello iOS, I am Flutter")
-
-
-
-
-
-
-
-
-
-
-
-
-
       /*******************--[focus here 🧐]--*******************/
     );
   }

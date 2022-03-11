@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.teal,
         elevation: 4,
       ),
-      body: wrapQuiz(),
+      body: rowQuiz(),
       /*******************--[focus here 🧐]--*******************/
     );
   }

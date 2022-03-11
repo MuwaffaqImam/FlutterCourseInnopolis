@@ -3,99 +3,78 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.red,
+        accentColor: Colors.lightBlue,
+      )),
+      home: InteractiveWidget(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+class InteractiveWidget extends StatefulWidget {
+  const InteractiveWidget({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _InteractiveWidgetState createState() => _InteractiveWidgetState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  bool isOpened = true;
+class _InteractiveWidgetState extends State<InteractiveWidget> {
+  double size = 0;
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: AppBar(
-        title: Text('Lab 3',style:TextStyle(fontSize:18),),
-      ),
-      body: AnimatedContainer(
-        margin: EdgeInsets.all(20),
-        duration: Duration(milliseconds: 450),
-        width: screenWidth,
-        height: isOpened ? 60 : screenHeight,
-        color: Colors.indigo,
-        child: Stack(
-          children: [
-            Container(
-              height: 60,
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              color: Colors.yellow,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    isOpened = !isOpened;
-                  });
-                },
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Text(
-                          'Click to Expand',
-                          style: TextStyle(fontSize: 18),
-                        )),
-                    Icon(isOpened
-                        ? Icons.keyboard_arrow_down
-                        : Icons.keyboard_arrow_up),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top : 60.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    changeColors(screenWidth),
-                    changeColors(screenWidth),
-                    changeColors(screenWidth),
-                    changeColors(screenWidth),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: AppBar(),
+      body: animatedContainer(),
     );
   }
 
-  Widget changeColors(double width) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        child: Container(
-            margin: EdgeInsets.all(8),
-            color: Colors.white,
-            width: width,
-            height: 150,
-            child: Text('Change with what is requested!')),
-      ),
+  Column animatedContainer() {
+    return Column(
+      children: [
+        AnimatedContainer(
+          margin: EdgeInsets.all(16),
+          color: size > 150 ? Colors.red : Colors.blue,
+          width: 100 + size,
+          height: 100 + size,
+          duration: Duration(milliseconds: 350),
+        ),
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  size += 50;
+                  setState(() {});
+                },
+                child: Icon(
+                  Icons.add,
+                ),
+              ),
+              SizedBox(
+                width: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  size -= 50;
+                  setState(() {});
+                },
+                child: Icon(
+                  Icons.remove,
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
