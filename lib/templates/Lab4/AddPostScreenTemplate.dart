@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+//
 
 class AddPostScreenTemplate extends StatefulWidget {
   /// make the screen introduce it self
   static getRoute(BuildContext context) {
     /// Exercise 4 return PageRouteBuilder to show this screen recap last lesson or search Internet if you forgot
+
   }
 
   const AddPostScreenTemplate({Key? key}) : super(key: key);
@@ -16,6 +18,9 @@ class AddPostScreenTemplate extends StatefulWidget {
 
 class _AddPostScreenTemplateState extends State<AddPostScreenTemplate> {
 
+
+
+  TextEditingController  titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +33,7 @@ class _AddPostScreenTemplateState extends State<AddPostScreenTemplate> {
         child: Column(
           children: [
             TextField(
+              controller: titleController,
               decoration: const InputDecoration(
                 icon: Icon(Icons.title),
                 filled: true,
@@ -55,6 +61,7 @@ class _AddPostScreenTemplateState extends State<AddPostScreenTemplate> {
               child: ElevatedButton(
                 onPressed: () {
                   /// Exercise 5 call addComment with Named parameter
+                  addComment(title: titleController.text);
                 },
                 child: Text("Add Comment".toUpperCase()),
               ),
@@ -65,7 +72,7 @@ class _AddPostScreenTemplateState extends State<AddPostScreenTemplate> {
     );
   }
 
-   addComment()  {
+   addComment({required String title})  {
    /// Exercise 5 call Post API here
   }
 }
