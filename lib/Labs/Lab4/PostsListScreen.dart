@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:courses_codes/Labs/Lab4/AddPostScreen.dart';
-import 'package:courses_codes/Lecture9-AsyncAwaite/AddUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';

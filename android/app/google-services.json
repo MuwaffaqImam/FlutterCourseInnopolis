@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "35150381585",
+    "project_id": "artgallery-fluttercourse",
+    "storage_bucket": "artgallery-fluttercourse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35150381585:android:e935081455375c793f67b0",
+        "android_client_info": {
+          "package_name": "com.example.courses_codes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35150381585-66n25jhvsc44fisuto1hkb9cn72avcq6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQAePB1LteqdZZmSd0VHRvj8Q9sP1bKiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35150381585-66n25jhvsc44fisuto1hkb9cn72avcq6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

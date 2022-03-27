@@ -2,12 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:courses_codes/Lecture12&13-Firebase/ArtDetails.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'Art.dart';
 
-import 'Lecture12&13-Firebase/Art.dart';
-import 'firebase/Art.dart';
-import 'firebase/MemeDetails.dart';
-
-void main() async {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(MyApp());
@@ -36,13 +33,15 @@ class MyArtApp extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyArtApp> {
+  List<Art> artList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("FireBase"),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<Art>>(
         /// Initialize FlutterFire:
         future: getArt(),
         builder: (context, snapshot) {
@@ -53,8 +52,8 @@ class _MyHomePageState extends State<MyArtApp> {
 
           /// On completion
           if (snapshot.connectionState == ConnectionState.done) {
-            List<Meme> list = snapshot.data as List<Meme>;
-            return buildGridView(list);
+            artList = snapshot.data!;
+            return buildGrid(artList);
           }
 
           /// On Loading
@@ -67,49 +66,52 @@ class _MyHomePageState extends State<MyArtApp> {
     );
   }
 
-  getArt() async {
-    List<Meme> memes = [];
+  Future<List<Art>> getArt() async {
+    List<Art> arts = [];
     await FirebaseFirestore.instance
-        .collection("gallery")
+        .collection('gallery')
         .get()
         .then((QuerySnapshot querySnapshot) {
-      print(querySnapshot.size);
-      querySnapshot.docs.forEach((QueryDocumentSnapshot element) {
-        memes.add(Meme.fromDoc(element));
+      querySnapshot.docs.forEach((QueryDocumentSnapshot doc) {
+        arts.add(Art.fromDoc(doc));
       });
     });
-    return memes;
+    return arts;
   }
 
-  Widget buildGridView(List<Meme> list) {
+  Widget buildGrid(List<Art> artList) {
     return RefreshIndicator(
-      onRefresh: () async {
+      onRefresh: () async{
+        artList=[];
         await getArt();
         setState(() {});
         return Future.value();
       },
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, childAspectRatio: 0.7),
-          itemCount: list.length,
+            crossAxisCount: 2,
+            childAspectRatio: 0.70,
+          ),
+          itemCount: artList.length,
           itemBuilder: (BuildContext context, int index) {
             return InkWell(
               onTap: () {
-                Navigator.push(
-                    context, MemeDetailsScreen.getRoute(list[index]));
+                Navigator.push(context, ArtDetails.getRoute(artList[index]));
               },
               child: Card(
-                color: Colors.amber,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(list[index].image),
+                    Image.network(
+                      artList[index].image,
+                      fit: BoxFit.cover,
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                          child: Text(
-                        '${list[index].title}',
-                        style: TextStyle(fontSize: 18),
-                      )),
+                      child: Text(
+                        artList[index].title,
+                        style: TextStyle(fontSize: 24),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -119,10 +121,7 @@ class _MyHomePageState extends State<MyArtApp> {
                           SizedBox(
                             width: 8,
                           ),
-                          Text(
-                            '${list[index].views}',
-                            style: TextStyle(fontSize: 14),
-                          ),
+                          Text('${artList[index].views}'),
                         ],
                       ),
                     ),
