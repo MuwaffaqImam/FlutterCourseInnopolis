@@ -6,7 +6,7 @@ import 'Art.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) => print(value.options.projectId));
   runApp(MyApp());
 }
 
