@@ -42,28 +42,59 @@ class _MyHomePageState extends State<MyArtApp> {
       appBar: AppBar(
         title: Text("FireBase"),
       ),
-      body: FutureBuilder(
-        /// Initialize FlutterFire:
-        future: getArt(),
-        builder: (context, snapshot) {
-          /// if Error
-          if (snapshot.hasError) {
-            return Text('${snapshot.error}');
+      body: FutureBuilder<String>(
+        future: doSomething(),
+        builder: (context, snapshot){
+          // 1- on Error
+          if(snapshot.hasError){
+            return Center(child: Text("Error"));
           }
 
-          /// On completion
-          if (snapshot.connectionState == ConnectionState.done) {
-            List<Meme> list = snapshot.data as List<Meme>;
-            return buildGridView(list);
+          // 2- on Success
+          if(snapshot.connectionState == ConnectionState.done){
+              String data = snapshot.data!;
+            return Center(child: Text("Success we got $data"));
           }
 
-          /// On Loading
-          return Center(
-              child: CircularProgressIndicator(
-            strokeWidth: 3,
-          ));
+          // 3 - on Loading
+          return Center(child: CircularProgressIndicator(strokeWidth: 3,));
+
         },
       ),
+    );
+  }
+
+
+  Future<String> doSomething() async {
+   await Future.delayed(Duration(seconds: 3));
+   throw NullThrownError();
+    return Future.value("Hi I returned");
+  }
+
+
+  FutureBuilder<Object?> buildFutureBuilder() {
+    return FutureBuilder(
+
+      /// Initialize FlutterFire:
+      future: getArt(),
+      builder: (context, snapshot) {
+        /// if Error
+        if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
+
+        /// On completion
+        if (snapshot.connectionState == ConnectionState.done) {
+          List<Meme> list = snapshot.data as List<Meme>;
+          return buildGridView(list);
+        }
+
+        /// On Loading
+        return Center(
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+            ));
+      },
     );
   }
 
@@ -107,9 +138,9 @@ class _MyHomePageState extends State<MyArtApp> {
                       padding: const EdgeInsets.all(8.0),
                       child: Center(
                           child: Text(
-                        '${list[index].title}',
-                        style: TextStyle(fontSize: 18),
-                      )),
+                            '${list[index].title}',
+                            style: TextStyle(fontSize: 18),
+                          )),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
