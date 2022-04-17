@@ -23,7 +23,9 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.deepPurple,
               accentColor: Colors.deepOrangeAccent)),
       home: BlocProvider(
-          create: (BuildContext context) => ApiBloc(), child: MyHomePage()),
+        create: (BuildContext context) => ApiBloc1(),
+        child: MyHomePage(),
+      ),
     );
   }
 }
@@ -54,12 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildBloc() {
-    return BlocBuilder<ApiBloc, ApiState>(builder: (context, state) {
+    return BlocBuilder<ApiBloc1, ApiState1>(builder: (context, state) {
       if (state is InitialState)
         return Center(
           child: ElevatedButton(
               onPressed: () {
-                context.read<ApiBloc>().add(GetUsersEvent());
+                context.read<ApiBloc1>().add(GetUsersEvent());
               },
               child: Text("Get Users".toUpperCase())),
         );

@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../Lecture9&10&11-AsyncAwaite/User.dart';
 
-class ApiBloc extends Bloc<ApiEvent, ApiState> {
-  ApiBloc() : super(InitialState()) {
+class ApiBloc1 extends Bloc<ApiEvent1, ApiState1> {
+  ApiBloc1() : super(InitialState()) {
     on<GetUsersEvent>(_getUserList);
   }
 
-  _getUserList(GetUsersEvent event, Emitter<ApiState> emits) async {
+  _getUserList(GetUsersEvent event, Emitter<ApiState1> emits) async {
     emit(LoadingState());
     try {
       List<User> users = await ApiProvider().getUsers();

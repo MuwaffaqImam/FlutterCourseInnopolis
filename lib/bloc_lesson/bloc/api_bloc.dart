@@ -18,7 +18,6 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
     try {
       emitter(LoadingState());
       List<User> users = await getUsers();
-      emitter(SuccessUserList(users));
     }catch(e){
       print(e);
       emitter(FailureState());

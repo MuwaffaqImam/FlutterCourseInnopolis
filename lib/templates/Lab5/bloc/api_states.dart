@@ -1,4 +1,6 @@
-import '../../Lecture9&10&11-AsyncAwaite/User.dart';
+
+
+import '../Todo.dart';
 
 abstract class ApiStates{}
 
@@ -7,6 +9,6 @@ class FailureState extends ApiStates{}
 class InitialState extends ApiStates{}
 
 class SuccessUserList extends ApiStates{
-  List<User> usersList;
+  List<Todo> usersList;
   SuccessUserList(this.usersList);
 }

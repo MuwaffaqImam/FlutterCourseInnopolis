@@ -3,7 +3,8 @@ import 'package:courses_codes/bloc_lesson/bloc/api_events.dart';
 import 'package:courses_codes/bloc_lesson/bloc/api_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../Lecture9&10&11-AsyncAwaite/User.dart';
+import '../../../Lecture9&10&11-AsyncAwaite/User.dart';
+import 'Todo.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<User> users = [];
+  List<Todo> users = [];
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildBloc() {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
-      if (state is InitialState) {
-        return buildInitialView();
-      }
-      if (state is LoadingState) {
-        return Center(child: CircularProgressIndicator());
-      }
-      if (state is SuccessUserList) {
-        List<User> user = state.usersList;
-        return buildUserList(user);
-      }
-      if (state is FailureState) {
-        return Center(child: Text("Error while Connecting"));
-      }
 
 
-        return Text("Nothing");
+      return Text("Nothing");
     });
   }
 
@@ -74,14 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return Center(
       child: ElevatedButton(
           onPressed: () {
-            // call bloc and send event
-            context.read<ApiBloc>().add(GetUserListEvent());
+            /// call bloc and send event
+
           },
-          child: Text("Get Users".toUpperCase())),
+          child: Text("Get TODO".toUpperCase())),
     );
   }
 
-  Widget buildUserList(List<User> users) {
+  Widget buildUserList(List<Todo> users) {
     return RefreshIndicator(
       onRefresh: () {
         return Future.delayed(Duration(seconds: 5), () {});
@@ -94,9 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: users.length,
             itemBuilder: (BuildContext context, int index) {
               return ListTile(
-                leading: Icon(Icons.person),
-                title: Text("${users[index].name}"),
-                subtitle: Text("${users[index].email}"),
+                leading: Icon(Icons.today_outlined),
+                title: Text("${users[index].title}"),
+                trailing: users[index].completed
+                    ? Icon(
+                        Icons.done,
+                        color: Colors.green,
+                      )
+                    : null,
               );
             }),
       ),
