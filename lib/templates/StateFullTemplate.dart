@@ -1,18 +1,15 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(
-            primarySwatch: Colors.red,
-            accentColor: Colors.lightBlue,
-          )),
       home: MyHomePage(),
     );
   }
@@ -26,71 +23,112 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int counter = 0;
-
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        appBar: AppBar(
-          leading: const Icon(Icons.android_sharp),
-          title: const Text('Flutter course'),
-          elevation: 4,
+      backgroundColor: Colors.grey,
+      appBar: AppBar(
+        title: Text(
+          'Lab 3',
+          style: TextStyle(fontSize: 18),
         ),
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              InkWell(
+      ),
+      body: AnimatedContainer(
+        margin: EdgeInsets.all(20),
+        duration: Duration(milliseconds: 450),
+        width: screenWidth,
+        height: screenHeight,
+        // to 0 when click on it, to screen height when also click on it
+        color: Colors.indigo,
+        child: Stack(
+          children: [
+            Container(
+              height: 60,
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              color: Colors.yellow,
+              child: InkWell(
                 onTap: () {
-                  counter++;
                   setState(() {});
                 },
-                child: Icon(
-                  Icons.thumb_up,
-                  size: 100,
-                  color: Colors.blue,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                        child: Text(
+                          'Click to Expand',
+                          style: TextStyle(fontSize: 18),
+                        )),
+                    Icon(Icons.keyboard_arrow_up),
+                  ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: InkWell(
-                  splashColor: Colors.blue,
-                  onLongPress: () {
-                    counter = 0;
-                    setState(() {});
-                  },
-                  onTap: () {
-                    counter++;
-                    setState(() {});
-                  },
-                  onDoubleTap: () {
-                    counter += 2;
-                    setState(() {});
-                  },
-                  child: Text(
-                    '$counter',
-                    style: TextStyle(
-                        fontSize: 50,
-                        color: counter >= 10 ? Colors.red : Colors.black),
-                  ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 60.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    changeShapes(screenWidth),
+                    flutterChanger(screenWidth),
+                    showHide(screenWidth),
+                  ],
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  counter--;
-                  setState(() {
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-                  });
-                },
-                child: Icon(
-                  Icons.thumb_down,
-                  size: 100,
-                  color: Colors.red,
-                ),
-              ),
-            ],
-          ),
-        ));
+  Widget changeShapes(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
+
+            /// ********** Do changes in child below ********** ///
+            child: Text('Change with Requested')),
+      ),
+    );
+  }
+
+  Widget flutterChanger(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
+
+            /// ********** Do changes in child below ********** ///
+            child: Text('Change with Requested')),
+      ),
+    );
+  }
+
+  Widget showHide(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
+
+            /// ********** Do changes in child below ********** ///
+            child: Text('Change with Requested')),
+      ),
+    );
   }
 }
-

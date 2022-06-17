@@ -7,6 +7,8 @@ class MyColors {
   static const Color greenGrass = Color(0xFF4D6658);
   static const Color smoothBackground = Color(0xFFF2EEE1);
   static final Color smoothGreen = Color(0xFFFBFDF7);
+  // Fonts for titles "Eczar";
+  // Fonts for smaller text "Merriweather";
 }
 
 class MyTextStyles {

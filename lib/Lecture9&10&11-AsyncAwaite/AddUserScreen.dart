@@ -10,15 +10,15 @@ class AddUserScreen extends StatefulWidget {
   static getRoute(BuildContext context) {
     return PageRouteBuilder(
         transitionsBuilder: (_, animation, secondAnimation, child) {
-      /// add your animation here
-      return FadeTransition(
-        opacity: animation,
-        child: RotationTransition(
-          turns: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
-          child: child,
-        ),
-      );
-    }, pageBuilder: (_, __, ___) {
+          /// add your animation here
+          return FadeTransition(
+            opacity: animation,
+            child: RotationTransition(
+              turns: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+              child: child,
+            ),
+          );
+        }, pageBuilder: (_, __, ___) {
       return new AddUserScreen();
     });
 
@@ -38,7 +38,7 @@ class AddUserScreen extends StatefulWidget {
 class _AddUserScreenState extends State<AddUserScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController =
-      TextEditingController(text: "@gmail.com");
+  TextEditingController(text: "@gmail.com");
   TextEditingController genderController = TextEditingController(text: "male");
 
   @override
@@ -91,7 +91,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
               alignment: Alignment.bottomRight,
               child: ElevatedButton(
                 onPressed: () {
-                  // addUser();
+                  // postUser(name: name, gender: gender, email: email);
                 },
                 child: Text("Add User".toUpperCase()),
               ),
@@ -102,10 +102,9 @@ class _AddUserScreenState extends State<AddUserScreen> {
     );
   }
 
-  void addUser(
-      {required String name,
-      required String gender,
-      required String email}) async {
+  void postUser({required String name,
+    required String gender,
+    required String email}) async {
     var response = await http.post(
         Uri.https(
           "gorest.co.in",
@@ -113,7 +112,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
         ),
         headers: {
           "Authorization":
-              "Bearer ed0645c09baf75ccb7b21afc0af41ab01f0770fd90e831d5295fab6c77d96965",
+          "Bearer ed0645c09baf75ccb7b21afc0af41ab01f0770fd90e831d5295fab6c77d96965",
           "Content-Type": "application/json",
         },
         body: jsonEncode({

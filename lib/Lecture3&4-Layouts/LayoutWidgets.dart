@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.teal,
         elevation: 4,
       ),
-      body: rowQuiz(),
+      body: expandedExample(),
       /*******************--[focus here 🧐]--*******************/
     );
   }
@@ -169,7 +169,6 @@ class MyHomePage extends StatelessWidget {
               ),
             )),
         Expanded(
-          flex: 2,
           child: Container(
               width: 300,
               color: Colors.blue,
