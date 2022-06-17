@@ -23,8 +23,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isOpened=true;
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -42,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: EdgeInsets.all(20),
         duration: Duration(milliseconds: 450),
         width: screenWidth,
-        height: isOpened ? screenHeight : 60, // to 0 when click on it, to screen height when also click on it
+        height: isOpened ? screenHeight : 60,
+        // to 0 when click on it, to screen height when also click on it
         color: Colors.indigo,
         child: Stack(
           children: [
@@ -51,26 +50,18 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.symmetric(horizontal: 16),
               color: Colors.yellow,
               child: InkWell(
-                onTap: (){
-                  setState(() {
-                    isOpened = !isOpened;
-                  });
+                onTap: () {
+                  setState(() {});
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                         child: Text(
-                          'Click to Expand',
-                          style: TextStyle(fontSize: 18),
-                        )),
-                    Icon(
-                      isOpened
-                          ?
-                        Icons.keyboard_arrow_up
-                          :
-                      Icons.keyboard_arrow_down
-                    ),
+                      'Click to Expand',
+                      style: TextStyle(fontSize: 18),
+                    )),
+                    Icon(Icons.keyboard_arrow_up),
                   ],
                 ),
               ),
@@ -102,11 +93,13 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             width: width,
             height: 150,
+
             /// ********** Do changes in child below ********** ///
             child: Text('Change with Requested')),
       ),
     );
   }
+
   Widget flutterChanger(double width) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -116,11 +109,13 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             width: width,
             height: 150,
+
             /// ********** Do changes in child below ********** ///
             child: Text('Change with Requested')),
       ),
     );
   }
+
   Widget showHide(double width) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -130,11 +125,11 @@ class _MyHomePageState extends State<MyHomePage> {
             color: Colors.white,
             width: width,
             height: 150,
+
             /// ********** Do changes in child below ********** ///
             child: Text('Change with Requested')),
       ),
     );
   }
-
-
 }
+
