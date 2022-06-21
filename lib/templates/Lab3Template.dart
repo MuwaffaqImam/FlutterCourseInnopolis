@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: EdgeInsets.all(20),
         duration: Duration(milliseconds: 450),
         width: screenWidth,
-        height: isOpened ? screenHeight : 60,
+        height:  screenHeight,
         // to 0 when click on it, to screen height when also click on it
         color: Colors.indigo,
         child: Stack(
@@ -58,9 +58,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   children: [
                     Expanded(
                         child: Text(
-                      'Click to Expand',
-                      style: TextStyle(fontSize: 18),
-                    )),
+                          'Click to Expand',
+                          style: TextStyle(fontSize: 18),
+                        )),
                     Icon(Icons.keyboard_arrow_up),
                   ],
                 ),
@@ -132,4 +132,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-

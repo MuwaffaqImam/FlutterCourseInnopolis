@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: EdgeInsets.all(20),
         duration: Duration(milliseconds: 450),
         width: screenWidth,
-        height:  screenHeight,
+        height: screenHeight,
         // to 0 when click on it, to screen height when also click on it
         color: Colors.indigo,
         child: Stack(
