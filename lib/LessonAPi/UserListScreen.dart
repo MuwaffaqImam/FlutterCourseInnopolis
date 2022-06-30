@@ -1,8 +1,13 @@
 import 'dart:convert';
 
+import 'package:courses_codes/Lecture9&10&11-AsyncAwaite/AddUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
+
+import '../templates/AddUserScreenTemplate.dart';
+import 'AddUserScreen.dart';
+import 'ScreenB.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {ScreenB.routeName: (context) => ScreenB()},
       theme: ThemeData(
           colorScheme: ColorScheme.fromSwatch(
               primarySwatch: Colors.deepPurple,
@@ -38,7 +44,11 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text("Users List"),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {
+            String text = "Hello Text";
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => AddUserLessonApi()));
+          },
           child: Icon(Icons.person_add),
         ),
         body: FutureBuilder(
@@ -66,8 +76,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   getUsers() async {
-    await Future.delayed(Duration(seconds: 3), () {});
-
     Uri url = Uri.parse("https://gorest.co.in/public/v2/users");
     Response response = await http.get(url);
     // print(response.body);
