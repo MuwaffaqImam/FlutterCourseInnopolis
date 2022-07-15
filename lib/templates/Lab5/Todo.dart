@@ -10,6 +10,5 @@ class Todo {
     title = json['title'];
     completed = json['completed'];
     id = json['id'];
-
   }
 }

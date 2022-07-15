@@ -1,26 +1,21 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 void main() => runApp(MyApp());
 
+/// this is your APP Main screen configuration
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch(
-              primarySwatch: Colors.deepPurple,
-              accentColor: Colors.deepOrangeAccent)),
       home: MyHomePage(),
     );
   }
 }
 
+/// this is a template to start building a UI
+/// to start adding any UI you want change what comes after the [ body: ] tag below
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
@@ -29,84 +24,142 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<User> usersList = [];
+  List<Todo> todos = [];
+  List<Todo> todosOriginal = [];
+
+  @override
+  void initState() {
+    createListToDos();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Users List"),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.person_add),
-        ),
-        body: FutureBuilder(
-          future: getUsers(),
-          builder: (context, snapshot) {
-            // error
-            if (snapshot.hasError) return Text("Error");
-
-            // success
-            if (snapshot.connectionState == ConnectionState.done)
-              return createUIList();
-
-            return Center(child: CircularProgressIndicator());
-          },
-        ));
-  }
-
-  ElevatedButton createButton() {
-    return ElevatedButton(
-      onPressed: () {
-        getUsers();
-      },
-      child: Text("Get Users".toUpperCase()),
+      backgroundColor: const Color(0xfff4f4f4),
+      appBar: AppBar(
+        leading: const Icon(Icons.android_sharp),
+        title: const Text('App Title'),
+        backgroundColor: Colors.teal,
+        elevation: 4,
+      ),
+      body: myWidget(),
     );
   }
 
-  getUsers() async {
-    await Future.delayed(Duration(seconds: 3), () {});
+  Widget myWidget() {
+    return Column(
+      children: [
+        Column(
+          children: [
+            Text(
+              'Total hours to finish are: ${todos.fold<int>(0, (previousValue, element) => previousValue + element.hours)}',
+              style: TextStyle(fontSize: 24, fontFamily: "Eczar"),
+            ),
+            Wrap(
+              spacing: 10,
+              children: [
+                InkWell(
+                    onTap: filterByH,
+                    child: Chip(
+                      label: Text("Filter by H"),
+                      backgroundColor: Colors.greenAccent,
+                    )),
+                InkWell(
+                    onTap: filterByL,
+                    child: Chip(
+                      label: Text("Filter by L"),
+                      backgroundColor: Colors.amberAccent,
+                    )),
+                InkWell(
+                    onTap: duplicate,
+                    child: Chip(
+                      label: Text("duplicate"),
+                      backgroundColor: Colors.purpleAccent,
+                    )),
+                InkWell(
+                    onTap: clear,
+                    child: Chip(
+                      label: Text("clear"),
+                      backgroundColor: Colors.redAccent,
+                    )),
+              ],
+            ),
+          ],
+        ),
+        Divider(),
+        Expanded(
+          child: ListView(
+              children: todos
+                  .map((todo) => Column(
+                        children: [
+                          ListTile(
+                            title: Text(
+                              todo.name,
+                              style:
+                                  TextStyle(fontSize: 24, fontFamily: "Eczar"),
+                            ),
+                            subtitle: Text('Hours to finish ${todo.hours}',
+                                style: TextStyle(fontSize: 14)),
+                            trailing: Text(todo.priority.toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    fontFamily: "Eczar",
+                                    color: Colors.purple)),
+                            leading: Icon(Icons.list),
+                          ),
+                          Divider()
+                        ],
+                      ))
+                  .toList()),
+        ),
+      ],
+    );
+  }
 
-    Uri url = Uri.parse("https://gorest.co.in/public/v2/users");
-    Response response = await http.get(url);
-    // print(response.body);
-    List list = json.decode(response.body) as List;
-    list.forEach((element) {
-      usersList.add(User.fromJson(element));
+  void createListToDos() {
+    todos.add(Todo("create lesson ", "h", 2, true));
+    todos.add(Todo("break ", "l", 1, false));
+    todos.add(Todo("Talk to relatives ", "m", 1, false));
+    todos.add(Todo("play Horizon forbidden west ", "l", 2, false));
+    todos.add(Todo("Grade IP ", "h", 2, false));
+    todos.add(Todo("Teach Flutter ", "h", 3, true));
+    todos.add(Todo("Grade SWP ", "h", 1, false));
+    todosOriginal.addAll(todos);
+  }
+
+  void filterByH() {
+    setState(() {
+      todos =
+          todosOriginal.where((element) => element.priority == "h").toList();
     });
   }
 
-  Widget createUIList() {
-    return ListView.builder(
-        itemCount: usersList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              '${usersList[index].name}',
-              style: TextStyle(fontSize: 24),
-            ),
-            subtitle: Text(
-              '${usersList[index].email}',
-              style: TextStyle(fontSize: 14),
-            ),
-          );
-        });
+  void filterByL() {
+    setState(() {
+      todos =
+          todosOriginal.where((element) => element.priority == "l").toList();
+    });
+  }
+
+  void clear() {
+    setState(() {
+      todos = todosOriginal;
+    });
+  }
+
+  void duplicate() {
+    setState(() {
+      todos = todosOriginal.expand((element) => [element, element]).toList();
+    });
   }
 }
 
-class User {
-  late int id;
-  late String name;
-  late String email;
-  late String gender;
-  late String status;
+class Todo {
+  String name;
+  String priority;
+  int hours;
+  bool isCompleted;
 
-  User.fromJson(Map<String, dynamic> json) {
-    name = json["name"];
-    email = json["email"];
-    id = json["id"];
-    gender = json["gender"];
-    status = json["status"];
-  }
+  Todo(this.name, this.priority, this.hours, this.isCompleted);
 }

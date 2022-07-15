@@ -7,7 +7,7 @@ class AddPostScreenTemplate extends StatefulWidget {
   /// make the screen introduce it self
   static getRoute(BuildContext context) {
     /// Exercise 4 return PageRouteBuilder to show this screen recap last lesson or search Internet if you forgot
-    return MaterialPageRoute(builder: (_) => AddPostScreenTemplate());
+    return null;
   }
 
   const AddPostScreenTemplate({Key? key}) : super(key: key);
