@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(
       children: [
         Text(
+          // TODO add the total hours here
             'Total hours to finis X',
             style: TextStyle(fontSize: 24, fontFamily: 'Eczar')),
         Wrap(
@@ -96,7 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     backgroundColor: Colors.tealAccent)),
             InkWell(
                 onTap: () {
-                  //TODO make all hours to complete 0, all properties to low and uppercase the title
+                  //TODO Mute: make all hours to complete 0, all properties to low and uppercase the title
 
                 },
                 child: Chip(
