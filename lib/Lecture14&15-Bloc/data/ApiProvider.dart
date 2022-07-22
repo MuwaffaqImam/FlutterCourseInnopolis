@@ -6,7 +6,6 @@ import '../../Lecture9&10&11-AsyncAwaite/User.dart';
 
 class ApiProvider {
 
-
   Future<List<User>> getUsers() async {
     List<User> usersList = [];
     print("connect to internet");

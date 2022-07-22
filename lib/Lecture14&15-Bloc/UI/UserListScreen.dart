@@ -5,10 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-
-import '../../Lecture9&10&11-AsyncAwaite/AddUserScreen.dart';
-import '../../Lecture9&10&11-AsyncAwaite/User.dart';
+import '../../models/User.dart';
 import '../bloc/Api_state.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -69,11 +68,6 @@ class _MyHomePageState extends State<MyHomePage> {
         return Center(child: Text("Error"));
       else if (state is LoadingState)
         return Center(child: CircularProgressIndicator());
-      else if (state is UserListState) {
-        print("hi");
-        users = state.users;
-        return buildUserList(state.users);
-      } else
         return Text("Not Reachable");
     });
   }

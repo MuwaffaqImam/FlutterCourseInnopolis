@@ -9,6 +9,5 @@ class LoadingState extends ApiState1 {}
 
 class UserListState extends ApiState1 {
   List<User> users;
-
   UserListState(this.users);
 }

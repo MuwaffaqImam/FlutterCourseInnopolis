@@ -38,6 +38,9 @@ dependencies:
   cloud_firestore: ^3.1.10
   flutter_bloc: ^8.0.1
   provider: ^6.0.3
+  google_ml_kit: ^0.11.0
+  image_picker: ^0.8.5+3
+  path_provider: ^2.0.11
 
 
 dev_dependencies:
@@ -64,6 +67,7 @@ flutter:
 
   assets:
     - assets/
+    - assets/ml/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
