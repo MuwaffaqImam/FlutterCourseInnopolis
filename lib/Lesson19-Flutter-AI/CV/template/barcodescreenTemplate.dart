@@ -6,12 +6,12 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'dart:ui' as ui;
 
-class BarcodeScannerView extends StatefulWidget {
+class BarcodeScannerViewTemplate extends StatefulWidget {
   @override
-  _BarcodeScannerViewState createState() => _BarcodeScannerViewState();
+  _BarcodeScannerViewTemplateState createState() => _BarcodeScannerViewTemplateState();
 }
 
-class _BarcodeScannerViewState extends State<BarcodeScannerView> {
+class _BarcodeScannerViewTemplateState extends State<BarcodeScannerViewTemplate> {
 
   bool isLoading = false;
   final picker = ImagePicker();
@@ -83,7 +83,7 @@ class _BarcodeScannerViewState extends State<BarcodeScannerView> {
       isLoading = true;
     });
     final barcodes = await _barcodeScanner.processImage(inputImage);
-   // TODO handle showing values
+
   }
 
   void showAlertDialog(BuildContext context, String data) {
