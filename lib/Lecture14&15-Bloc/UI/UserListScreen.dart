@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
-import '../../models/User.dart';
+import '../../Lecture9&10&11-AsyncAwaite/User.dart';
 import '../bloc/Api_state.dart';
 
 

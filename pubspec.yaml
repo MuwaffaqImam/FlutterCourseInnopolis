@@ -69,33 +69,29 @@ flutter:
     - assets/
     - assets/ml/
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  # - assets/
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-
 
   fonts:
-    - family: Merriweather
-      fonts:
-        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
-          weight: 400
-
     - family: Eczar
       fonts:
         - asset: assets/fonts/Eczar/Eczar-Bold.ttf
-          weight: 700
         - asset: assets/fonts/Eczar/Eczar-ExtraBold.ttf
-          weight: 900
+
+    - family: Merriweather
+      fonts:
+          - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+          - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+
+
+
+#
+#  fonts:
+#    - family: Merriweather
+#      fonts:
+#        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+#        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
+#
+#
+#    - family: Eczar
+#      fonts:
+#        - asset: assets/fonts/Eczar/Eczar-Bold.ttf
+#        - asset: assets/fonts/Eczar/Eczar-ExtraBold.ttf

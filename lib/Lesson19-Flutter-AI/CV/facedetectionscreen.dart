@@ -111,7 +111,7 @@ class FaceDetectionPageState extends State<FaceDetectionPage> {
     setState(() {
       isLoading = true;
     });
-    final faces = await _faceDetector.processImage(inputImage);
+    List<Face> faces = await _faceDetector.processImage(inputImage);
     if (faces.isNotEmpty) {
       if (mounted) {
         setState(() {
@@ -153,13 +153,6 @@ class FacePainter extends CustomPainter {
   final List<Face> faces;
   final List<Rect> rects = [];
 
-  final ui.ParagraphBuilder builder = ui.ParagraphBuilder(
-    ui.ParagraphStyle(
-        textAlign: TextAlign.left,
-        fontSize: 72,
-        textDirection: TextDirection.ltr),
-  );
-
   FacePainter(this.image, this.faces) {
     for (var i = 0; i < faces.length; i++) {
       rects.add(faces[i].boundingBox);
@@ -169,7 +162,7 @@ class FacePainter extends CustomPainter {
   @override
   void paint(ui.Canvas canvas, ui.Size size) {
     List<Offset> offsets = [];
-    final Paint paint = Paint()
+     Paint paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 10.0
       ..color = Colors.red;
@@ -178,7 +171,6 @@ class FacePainter extends CustomPainter {
     for (var i = 0; i < faces.length; i++) {
       canvas.drawRect(rects[i], paint);
       offsets.add(rects[i].topRight);
-      builder.addText(' Face: $i ');
     }
   }
 

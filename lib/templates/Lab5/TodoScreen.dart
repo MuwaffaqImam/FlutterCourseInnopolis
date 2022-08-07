@@ -1,10 +1,8 @@
-import 'package:courses_codes/bloc_lesson/bloc/api_bloc.dart';
-import 'package:courses_codes/bloc_lesson/bloc/api_events.dart';
-import 'package:courses_codes/bloc_lesson/bloc/api_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../Lecture9&10&11-AsyncAwaite/User.dart';
 import 'Todo.dart';
+import 'bloc/api_bloc.dart';
+import 'bloc/api_states.dart';
 
 void main() => runApp(MyApp());
 

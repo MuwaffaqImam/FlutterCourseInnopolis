@@ -51,7 +51,10 @@ class TextRecognitionState extends State<TextRecognitionPage> {
                           child: Image.file(_imageFile!)),
                     ),
                     Divider(thickness: 5),
-                    Text('Text Extracted',style:TextStyle(fontSize:18),),
+                    Text(
+                      'Text Extracted',
+                      style: TextStyle(fontSize: 18),
+                    ),
                     if (textRecognized != null)
                       Expanded(
                         child: ListView.builder(
@@ -97,13 +100,12 @@ class TextRecognitionState extends State<TextRecognitionPage> {
     setState(() {
       isLoading = true;
     });
-    final recognizedText = await _textRecognizer.processImage(inputImage);
+    RecognizedText recognizedText =
+        await _textRecognizer.processImage(inputImage);
     if (recognizedText.text.isNotEmpty) {
       if (mounted) {
-        if (mounted) {
-          setState(() {});
-          textRecognized = recognizedText;
-        }
+        setState(() {});
+        textRecognized = recognizedText;
       }
     } else {
       if (mounted) {

@@ -3,10 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<key>NSCameraUsageDescription</key>
-	<key>NSMicrophoneUsageDescription</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>describe why your app needs permission for the photo library.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Courses Codes</string>
 	<key>CFBundleExecutable</key>

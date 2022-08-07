@@ -84,6 +84,9 @@ class _BarcodeScannerViewState extends State<BarcodeScannerView> {
     });
     final barcodes = await _barcodeScanner.processImage(inputImage);
     if (barcodes.isNotEmpty) {
+      barcodes.forEach((element) {
+        print(element.displayValue);
+      });
       if (mounted) {
         showAlertDialog(context, barcodes.first.displayValue.toString());
       }
@@ -95,7 +98,7 @@ class _BarcodeScannerViewState extends State<BarcodeScannerView> {
            onPressed: () {},
          ),
          content: Text('Nothing is detected, try again!'),
-         duration: Duration(milliseconds: 500),
+         duration: Duration(seconds: 2),
        ));
      });
     }
