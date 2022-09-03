@@ -1,7 +1,10 @@
 import 'dart:convert';
 import 'package:courses_codes/Labs/Lab4/AddPostScreen.dart';
-import 'package:courses_codes/templates/Lab4/AddPostScreenTemplate.dart';
 import 'package:flutter/material.dart';
+
+import 'AddPostScreenTemplate.dart';
+
+
 
 void main() => runApp(MyApp());
 
