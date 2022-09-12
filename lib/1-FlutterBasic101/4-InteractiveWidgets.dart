@@ -59,11 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Text(
-              '$counter',
+            child:
+            Text('$counter',
               style: TextStyle(
                   fontSize: 50,
-                  color: counter >= 10 ? Colors.red : Colors.black),
+                  color: counter >= 10
+                      ? Colors.red
+                      : Colors.black),
             ),
           ),
           ElevatedButton(

@@ -26,7 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,54 +39,25 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InkWell(
-                onTap: () {
-                  counter++;
-                  setState(() {});
-                },
-                child: Icon(
-                  Icons.thumb_up,
-                  size: 100,
-                  color: Colors.blue,
-                ),
-              ),
+              ElevatedButton(onPressed: (){
+                   // TODO: Increase the counter here
+
+              }, child: Icon(Icons.add),),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: InkWell(
-                  splashColor: Colors.blue,
-                  onLongPress: () {
-                    counter = 0;
-                    setState(() {});
-                  },
-                  onTap: () {
-                    counter++;
-                    setState(() {});
-                  },
-                  onDoubleTap: () {
-                    counter += 2;
-                    setState(() {});
-                  },
-                  child: Text(
-                    '$counter',
-                    style: TextStyle(
-                        fontSize: 50,
-                        color: counter >= 10 ? Colors.red : Colors.black),
-                  ),
+                // TODO long press on text rest counter
+                child: Text(
+                  '0',
+                  style: TextStyle(
+                      fontSize: 50,
+                      color: Colors.black),
                 ),
               ),
-              InkWell(
-                onTap: () {
-                  counter--;
-                  setState(() {
+    
+               ElevatedButton(onPressed: (){
+                // TODO: Decrease the counter here
 
-                  });
-                },
-                child: Icon(
-                  Icons.thumb_down,
-                  size: 100,
-                  color: Colors.red,
-                ),
-              ),
+              }, child: Icon(Icons.remove),)
             ],
           ),
         ));

@@ -1,8 +1,11 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:courses_codes/3-Asynchronous%20Networking%20Programming/4-AddUserScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
+
 
 void main() => runApp(MyApp());
 
@@ -30,7 +33,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.person_add),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, AddUserScreen.getRoute(context));
+        },
+        child: Icon(Icons.person_add),
+      ),
       appBar: AppBar(
         title: const Text('App Title'),
         backgroundColor: Colors.teal,
@@ -81,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
     http.Response response =
         await http.get(Uri.parse("https://gorest.co.in/public/v2/users"));
 
-
     final jsonArray = json.decode(response.body) as List;
 
     List<User> userList = [];
@@ -99,14 +106,25 @@ class _MyHomePageState extends State<MyHomePage> {
         itemBuilder: (context, index) => Column(
               children: [
                 ListTile(
-                    title: Text(userList[index].name!),
+                    title: Text(userList[index].name!,style: TextStyle(fontFamily: "Eczar"),),
+                    trailing: userList[index].status == "active"
+                        ? Icon(
+                            Icons.check,
+                            color: Colors.green,
+                          )
+                        : Icon(
+                            Icons.close,
+                            color: Colors.redAccent,
+                          ),
                     subtitle: Text(userList[index].email!),
                     leading: userList[index].gender == "male"
                         ? Icon(
                             Icons.male,
+                            color: Colors.indigo,
                           )
                         : Icon(
                             Icons.female,
+                            color: Colors.pink,
                           )),
                 Divider()
               ],
@@ -131,5 +149,3 @@ class User {
     id = json["id"];
   }
 }
-
-

@@ -45,7 +45,7 @@ class FaceDetectionPageState extends State<FaceDetectionPage> {
         ),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
-          : (_imageFile == null)
+          : (_imageFile == null && _faces.isEmpty)
               ? buildEmptyView()
               : BuildAIView(),
     );

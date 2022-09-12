@@ -1,7 +1,8 @@
+import 'package:courses_codes/5-StateManagment/ProviderStateManagment/UI/UserListScreen.dart';
+import 'package:courses_codes/5-StateManagment/ProviderStateManagment/provider/UserProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './UI/UserListScreen.dart';
-import './provider/UserProvider.dart';
+
 
 void main() {
   runApp(const MyApp());

@@ -44,7 +44,7 @@ class MyHomePage extends StatelessWidget {
   Widget myWidget(context) {
     return Container(
       padding: EdgeInsets.all(20),
-      child: Column(
+      child: ListView(
         children: [
           Text('Headline1', style: Theme.of(context).textTheme.headline1),
           Text('Headline2', style: Theme.of(context).textTheme.headline2),

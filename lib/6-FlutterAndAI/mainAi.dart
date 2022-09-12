@@ -1,12 +1,12 @@
+import 'package:courses_codes/6-FlutterAndAI/CV/BarcodeScreen.dart';
 import 'package:flutter/material.dart';
-import './CV/peoplecounter.dart';
-import './cv/barcodescreen.dart';
-import './cv/textrecognitionscreen.dart';
-import './CV/FaceDetectionScreen.dart';
-import './CV/ImageLabellingScreen.dart';
-import './NLP/WikipediaTraslator.dart';
-import './NLP/language_identifier_view.dart';
-import './NLP/language_translator_view.dart';
+import 'package:courses_codes/6-FlutterAndAI/CV/peoplecounter.dart';
+import 'package:courses_codes/6-FlutterAndAI/cv/textrecognitionscreen.dart';
+import 'package:courses_codes/6-FlutterAndAI/CV/FaceDetectionScreen.dart';
+import 'package:courses_codes/6-FlutterAndAI/CV/ImageLabellingScreen.dart';
+import 'package:courses_codes/6-FlutterAndAI/NLP/WikipediaTraslator.dart';
+import 'package:courses_codes/6-FlutterAndAI/NLP/language_identifier_view.dart';
+import 'package:courses_codes/6-FlutterAndAI/NLP/language_translator_view.dart';
 
 void main() => runApp(MyApp());
 
