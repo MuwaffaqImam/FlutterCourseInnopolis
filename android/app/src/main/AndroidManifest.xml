@@ -34,4 +34,8 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+
+    <uses-native-library
+        android:name="opencv_java4"
+        android:required="false" />
 </manifest>

@@ -35,7 +35,13 @@ class MyHomePage extends StatelessWidget {
   }
 
   void getUserApi() async {
-  var response = await http.get(Uri.parse('https://gorest.co.in/public/v2/users'));
+    var response =
+        await http.get(Uri.parse('https://gorest.co.in/public/v2/users'));
     print(response.body);
   }
 }
+
+
+
+
+
