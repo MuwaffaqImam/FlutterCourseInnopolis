@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -143,7 +142,19 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: 16,
           ),
-          createFABExtended()
+          FloatingActionButton.extended(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text("I'm snack bar"),
+                action: SnackBarAction(
+                  label: "ACTION",
+                  onPressed: () {},
+                ),
+              ));
+            },
+            label: Text("add user".toUpperCase()),
+            icon: Icon(Icons.add),
+          )
         ],
       ),
     );

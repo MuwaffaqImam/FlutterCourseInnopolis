@@ -19,18 +19,26 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*******************--[focus here 🧐]--*******************/
     return Scaffold(
-      /*******************--[focus here 🧐]--*******************/
-        appBar: AppBar(),
-        bottomNavigationBar: BottomAppBar(),
-        floatingActionButton: FloatingActionButton(onPressed: () {  },),
-        /*******************--[focus here 🧐]--*******************/
-        body: myWidget()
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+        ),
+        appBar: AppBar(
+
+        ),
+        bottomNavigationBar: BottomAppBar(
+          shape: CircularNotchedRectangle(),
+          child: SizedBox(
+            height: 56,
+          ),
+        ),
+        body: Center(child: myWidget(context)));
+    /*******************--[focus here 🧐]--*******************/
   }
 
-
-  Widget myWidget() {
+  Widget myWidget(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -43,13 +51,13 @@ class MyHomePage extends StatelessWidget {
           exercise3(),
           SizedBox(height: 25,),
           exercise4(),
+
           /*******************--[focus here 🧐]--*******************/
         ],
       ),
     );
   }
 
-  /// TODO: Implement Exercises below as per the handed Document
   Widget exercise1() {
     return FlutterLogo(
       size: 100,
@@ -80,6 +88,7 @@ class MyHomePage extends StatelessWidget {
       size: 100,
     );
   }
+
   Widget exercise6() {
     return FlutterLogo(
       size: 100,
