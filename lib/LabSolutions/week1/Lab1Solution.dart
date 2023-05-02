@@ -22,18 +22,65 @@ class LAb1HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*******************--[focus here 🧐]--*******************/
+
     return Scaffold(
-      backgroundColor: const Color(0xfff4f4f4),
-      /*******************--[focus here 🧐]--*******************/
-      appBar: AppBar(
-        leading: const Icon(Icons.stars),
-        title: const Text('Lab 1'),
-        backgroundColor: Colors.teal,
-        elevation: 4,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+          color: Colors.teal,
+        ),
+        backgroundColor: Colors.yellow,
+        splashColor: Colors.red,
       ),
-      body: myWidget(),
-      /*******************--[focus here 🧐]--*******************/
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        color: Colors.teal,
+        child: SizedBox(
+          height: 56,
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Title",
+                style: Theme.of(context).textTheme.headlineSmall,
+              ),
+            ),
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: Colors.orange,
+        leading: Icon(Icons.menu),
+        title: Text("Lab 2"),
+        centerTitle: true,
+        actions: [
+          SizedBox(
+            width: 16,
+          ),
+          Icon(Icons.settings),
+          SizedBox(
+            width: 16,
+          ),
+          Icon(Icons.favorite),
+          SizedBox(
+            width: 16,
+          ),
+          Icon(Icons.edit),
+          SizedBox(
+            width: 16,
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: myWidget(),
+      ),
     );
+    /*******************--[focus here 🧐]--*******************/
   }
 
   Widget myWidget() {
