@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
-
-/// this is your APP Main screen configuration
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        // to change your app color change this
+        primarySwatch: Colors.amber,
+      ),
       home: MyHomePage(),
     );
   }
@@ -16,163 +17,64 @@ class MyApp extends StatelessWidget {
 
 /// this is a template to start building a UI
 /// to start adding any UI you want change what comes after the [ body: ] tag below
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool isSelected = true;
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          child: Column(
-            children: [
-              DrawerHeader(
-                  child: FlutterLogo(
-                    style: FlutterLogoStyle.horizontal,
-                    size: 200,
-                  )),
-              ListTile(
-                title: Text("Settings"),
-                leading: Icon(Icons.settings),
-              ),
-              Divider(),
-              ListTile(
-                title: Text("Profile"),
-                leading: Icon(Icons.person),
-              ),
-              Divider(),
-              ListTile(
-                title: Text("Favorite"),
-                leading: Icon(Icons.favorite),
-              ),
-              Divider(),
-            ],
-          ),
-        ),
+        backgroundColor: Colors.amber,
         appBar: AppBar(
-          title: Text("Material Design"),
-          backgroundColor: Colors.black,
+          title: Text(
+            'Flower Shop',
+            style: TextStyle(fontFamily: 'casual'),
+          ),
+          elevation: 0.0,
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: Icon(Icons.add),
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.amber,
-          shape: CircularNotchedRectangle(),
-          child: SizedBox(
-              height: 56,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.edit),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Icon(Icons.favorite),
-                    SizedBox(
-                      width: 16,
-                    ),
-                    Icon(Icons.settings),
-                  ],
-                ),
-              )),
-        ),
-        body: myWidget(context));
-  }
-
-  Widget myWidget(context) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          InkWell(
-            onTap: () {},
-            child: Card(
-              elevation: 6,
-              child: SizedBox(
-                width: 200,
-                height: 200,
-                child: Center(child: Text("Im a Card")),
-              ),
-              color: Colors.blue,
-            ),
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          ActionChip(
-              avatar: CircleAvatar(
-                child: Text("MI"),
-              ),
-              label: Text("Muwaffaq Imam"),
-              onPressed: () {}),
-          SizedBox(
-            height: 16,
-          ),
-          InputChip(
-              selected: true,
-              avatar: Text("MS"),
-              label: Text("Muwaffaq Imam"),
-              onPressed: () {}),
-          SizedBox(
-            height: 16,
-          ),
-          ListTile(
-            tileColor: Colors.amberAccent,
-            title: Text("This is Title"),
-            subtitle: Text("This is subtitle"),
-            leading: CircleAvatar(
-              child: Icon(Icons.folder),
-            ),
-            trailing: Icon(
-              Icons.star,
-              color: Colors.red,
-            ),
-            onTap: () {},
-          ),
-          SizedBox(
-            height: 16,
-          ),
-          FloatingActionButton.extended(
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                content: Text("I'm snack bar"),
-                action: SnackBarAction(
-                  label: "ACTION",
-                  onPressed: () {},
-                ),
-              ));
-            },
-            label: Text("add user".toUpperCase()),
-            icon: Icon(Icons.add),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget createFABExtended() {
-    return FloatingActionButton.extended(
-      onPressed: () {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text("I'm snack bar"),
-          action: SnackBarAction(
-            label: "ACTION",
-            onPressed: () {},
-          ),
+        body: ListView(
+          children: <Widget>[
+            flowerDetails(context),
+          ],
         ));
-      },
-      label: Text("add user".toUpperCase()),
-      icon: Icon(Icons.add),
-    );
   }
+}
+
+
+Widget flowerDetails(BuildContext context) {
+  return Container(
+    padding: EdgeInsets.all(20),
+    color: Colors.amber,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        imageGroup(),
+        titleGroup(),
+        iconGroup(),
+        textGroup(),
+        buttonGroup(),
+      ],
+    ),
+  );
+}
+
+/// Image URL
+/// https://newevolutiondesigns.com/images/freebies/yellow-wallpaper-12.jpg
+
+Widget imageGroup() {
+  return Text('Replace with image group');
+}
+Widget titleGroup() {
+  return Text('Replace with title group');
+}
+
+Widget iconGroup() {
+  return Text('Replace with icons group');
+}
+/// here is the text to copy
+///Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',
+Widget textGroup() {
+  return Text('Replace with text group');;
+}
+
+Widget buttonGroup() {
+  return Text('Replace with button group');;
 }
