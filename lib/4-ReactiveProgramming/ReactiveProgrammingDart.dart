@@ -34,20 +34,11 @@ void expand() {
       .toList());
 }
 
-/// Future<T>       reduce(T Function(T previous, T element) combine);
-void reduceExample() {
-  /// reduce is just like Fold, but with no initial value, and it start with the first 2 elements in the list
-  List<String> names = ["Vlad", "Moofiy", "Maxim", "Malik", "T-bag"];
-  print(names.reduce((value, element) {
-    print(value);
-    print(element);
-    return value[0] + element[0];
-  }));
-}
+
 
 /// Future<S>        fold<S>(S initialValue, S Function(S previous, T element) combine);
 void foldExample() {
-  /// try to print the first letter of every item in the lest and combine them together and make the string start with -
+  /// try to print the first letter of every item in the list and combine them together and make the string start with !
   /// using foreach
   /// using fold
   List<String> names = [
@@ -68,6 +59,18 @@ void foldExample() {
   });
   print(value);
 }
+
+/// Future<T>       reduce(T Function(T previous, T element) combine);
+void reduceExample() {
+  /// reduce is just like Fold, but with no initial value, and it start with the first 2 elements in the list
+  List<String> names = ["Vlad", "Moofiy", "Maxim", "Malik", "T-bag"];
+  print(names.reduce((value, element) {
+    print(value);
+    print(element);
+    return value[0] + element[0];
+  }));
+}
+
 
 
 

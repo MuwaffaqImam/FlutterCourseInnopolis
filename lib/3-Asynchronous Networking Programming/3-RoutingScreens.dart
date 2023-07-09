@@ -92,18 +92,18 @@ class ScreenA extends StatelessWidget {
 }
 
 class ScreenB extends StatelessWidget {
-
   /**
    * It's a good practice to add the route like this, Let the screen introduce itself
    */
   static getRoute(context, String data) {
-    return 
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenB(data: "By Constructor")));
-
-       
+    return Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => ScreenB(data: "By Constructor")));
   }
 
   var data;
+
   ScreenB({Key? key, this.data}) : super(key: key);
 
   @override
@@ -149,7 +149,7 @@ class ScreenB extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context, "Data From Other");
+                    Navigator.pop(context, "Hello From the Other Side!");
                   },
                   child: Text("Go back"))
             ],
