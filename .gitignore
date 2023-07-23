@@ -120,4 +120,4 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 
 /lib/Labs/
-/lib/Firebase/
+
