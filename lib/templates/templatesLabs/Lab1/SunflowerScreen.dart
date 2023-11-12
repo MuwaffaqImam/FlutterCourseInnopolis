@@ -56,8 +56,8 @@ Widget flowerDetails(BuildContext context) {
   );
 }
 
-/// Image URL
-/// https://newevolutiondesigns.com/images/freebies/yellow-wallpaper-12.jpg
+/// Image work on Mobile https://newevolutiondesigns.com/images/freebies/yellow-wallpaper-12.jpg
+/// Image hat works on Web: https://ichef.bbci.co.uk/images/ic/640x360/p046xkbw.jpg
 
 Widget imageGroup() {
   return Text('Replace with image group');
