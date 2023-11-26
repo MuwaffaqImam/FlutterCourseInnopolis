@@ -75,16 +75,26 @@ flutter:
 
 
   fonts:
+
+    - family: Satisfy
+      fonts:
+        - asset: assets/fonts/Satisfy/Satisfy-Regular.ttf
+
     - family: Eczar
       fonts:
         - asset: assets/fonts/Eczar/Eczar-Bold.ttf
-        - asset: assets/fonts/Eczar/Eczar-ExtraBold.ttf
 
     - family: Merriweather
       fonts:
           - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
-          - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
 
+    - family: ZenDots
+      fonts:
+        - asset: assets/fonts/ZenDots/ZenDots-Regular.ttf
+
+    - family: Agbalumo
+      fonts:
+        - asset: assets/fonts/Agbalumo/Agbalumo-Regular.ttf
 
 
 #

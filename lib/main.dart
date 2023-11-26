@@ -1,10 +1,11 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
-/// this is your APP Main screen configuration
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,43 +15,193 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// this is a template to start building a UI
-/// to start adding any UI you want change what comes after the [ body: ] tag below
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   MyHomePage({Key? key}) : super(key: key);
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  bool isExpanded = true;
+  bool isCircle = true;
+  bool isVisible = true;
+  int count = 0;
+
+  @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
-      backgroundColor: const Color(0xfff4f4f4),
+      backgroundColor: Colors.grey,
       appBar: AppBar(
-        leading: const Icon(Icons.android_sharp),
-        title: const Text('App Title'),
-        backgroundColor: Colors.teal,
-        elevation: 4,
+        title: Text(
+          'Lab 3',
+          style: TextStyle(fontSize: 18),
+        ),
       ),
-      /*******************--[focus here 🧐]--*******************/
-      body: myWidget(),
-      /*******************--[focus here 🧐]--*******************/
+      body: AnimatedContainer(
+        margin: EdgeInsets.all(20),
+        duration: Duration(milliseconds: 450),
+        width: screenWidth,
+        height: isExpanded ? screenHeight : 60,
+        // to 60 when click on it, to screen height when also click on it
+        color: Colors.indigo,
+        child: Stack(
+          children: [
+            Container(
+              height: 60,
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              color: Colors.yellow,
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    isExpanded = !isExpanded;
+                  });
+                },
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                        child: Text(
+                      'Click to Expand',
+                      style: TextStyle(fontSize: 18),
+                    )),
+                    Icon(Icons.keyboard_arrow_up),
+                  ],
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 60.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    changeShapes(screenWidth),
+                    flutterChanger(screenWidth),
+                    showHide(screenWidth),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 
-  Widget myWidget() {
-    num x = 5;
-    return Container(
-      padding: EdgeInsets.all(20),
-      child:
-      /*******************--[focus here 🧐]--*******************/
+  Widget changeShapes(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
 
+            /// ********** Do changes in child below ********** ///
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  isCircle = !isCircle;
+                });
+              },
+              child: Row(
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: isCircle ? Colors.blue : Colors.red,
+                      shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
+                    ),
+                  ),
+                ],
+              ),
+            )),
+      ),
+    );
+  }
 
+  Widget flutterChanger(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
 
-      Text("Hello Course!!!")
+            /// ********** Do changes in child below ********** ///
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FlutterLogo(
+                  style: changeFlutterLogo(),
+                  size: 100,
+                ),
+                IconButton(
+                    onPressed: () {
+                      setState(() {
+                        count++;
+                        if (count > 2) count = 0;
+                      });
+                    },
+                    icon: Icon(
+                      Icons.refresh,
+                      size: 30,
+                    ))
+              ],
+            )),
+      ),
+    );
+  }
 
+  FlutterLogoStyle changeFlutterLogo() {
+    if (count == 0)
+      return FlutterLogoStyle.markOnly;
+    else if (count == 1) {
+      return FlutterLogoStyle.horizontal;
+    } else
+      return FlutterLogoStyle.stacked;
+  }
 
+  Widget showHide(double width) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        child: Container(
+            margin: EdgeInsets.all(8),
+            color: Colors.white,
+            width: width,
+            height: 150,
 
-
-
-      /*******************--[focus here 🧐]--*******************/
+            /// ********** Do changes in child below ********** ///
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Visibility(
+                  visible: isVisible,
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.red,
+                    size: 100,
+                  ),
+                ),
+                InkWell(
+                    onTap: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    },
+                    child: Icon(!isVisible ? Icons.lock_open : Icons.lock,
+                        color: Colors.orange, size: 100)),
+              ],
+            )),
+      ),
     );
   }
 }
