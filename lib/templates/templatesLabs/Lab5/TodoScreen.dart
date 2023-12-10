@@ -50,8 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildBloc() {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
-
-
       return Text("Nothing");
     });
   }
@@ -68,29 +66,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget buildUserList(List<Todo> users) {
-    return RefreshIndicator(
-      onRefresh: () {
-        return Future.delayed(Duration(seconds: 5), () {});
-      },
-      child: RefreshIndicator(
-        onRefresh: () {
-          return Future.value(true);
-        },
-        child: ListView.builder(
-            itemCount: users.length,
-            itemBuilder: (BuildContext context, int index) {
-              return ListTile(
-                leading: Icon(Icons.today_outlined),
-                title: Text("${users[index].title}"),
-                trailing: users[index].completed
-                    ? Icon(
-                        Icons.done,
-                        color: Colors.green,
-                      )
-                    : null,
-              );
-            }),
-      ),
-    );
+    return Text("Build list");
   }
 }

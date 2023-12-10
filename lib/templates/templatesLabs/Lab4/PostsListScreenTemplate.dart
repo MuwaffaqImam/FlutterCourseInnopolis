@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'AddPostScreenTemplate.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../Labs/templates/Lab4/AddPostScreenTemplate.dart';
 
 void main() => runApp(MyApp());
 
@@ -33,6 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Post> posts = [];
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,11 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: Icon(Icons.add_comment_sharp),
         ),
-        body: posts.isEmpty ? buildEmptyView() : buildUserList());
+        body: isLoading
+            ? Center(child: CircularProgressIndicator())
+            : posts.isEmpty
+                ? buildEmptyView()
+                : buildUserList());
   }
 
   Widget buildEmptyView() {
@@ -60,19 +66,69 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   getPosts() async {
-    ///Exercise 1 call API here
+    //"https://jsonplaceholder.typicode.com/posts"
+
+    setState(() {
+      isLoading=true;
+    });
+    await Future.delayed(Duration(seconds: 3), () {});
+    var response =
+        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
+    if (response.statusCode == 200) {
+      var list = jsonDecode(response.body) as List;
+
+      list.forEach((json) {
+        Post post = Post.fromJson(json);
+        posts.add(post);
+      });
+      print(posts);
+    } else {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Error!!')));
+    }
+
+    setState(() {
+      isLoading = false;
+    });
   }
 
   buildUserList() {
     return ListView.builder(
       itemCount: posts.length,
       itemBuilder: (context, index) {
-        return Text("Hello");
+        return Column(
+          children: [
+            ListTile(
+              title: Text(posts[index].title),
+              subtitle: Text(posts[index].body),
+              leading: Icon(Icons.comment),
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Divider()
+          ],
+        );
       },
     );
   }
 }
 
 class Post {
+  late int userId;
+  late int id;
+  late String title;
+  late String body;
 
+  Post.fromJson(Map<String, dynamic> json) {
+    userId = json["userId"] ?? "";
+    id = json["id"] ?? "";
+    title = json["title"] ?? "";
+    body = json["body"] ?? "";
+  }
+
+  @override
+  String toString() {
+    return 'Post{userId: $userId, id: $id, title: $title} \n \n ---------- ';
+  }
 }
