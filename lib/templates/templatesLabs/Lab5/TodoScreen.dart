@@ -1,3 +1,4 @@
+import 'package:courses_codes/templates/templatesLabs/Lab5/bloc/api_events.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Todo.dart';
@@ -51,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildBloc() {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
       // TODO Implement BlocBuilder and show states
-      return Text("Nothing");
+      return buildInitialView();
     });
   }
 
@@ -60,14 +61,20 @@ class _MyHomePageState extends State<MyHomePage> {
       child: ElevatedButton(
           onPressed: () {
             // TODO call bloc and trigger event
-
           },
           child: Text("Get TODO".toUpperCase())),
     );
   }
 
-  Widget buildUserList(List<Todo> todos) {
-    // TODO Implement List
-    return Text("Build list");
+  Widget buildUserList(List<Todo> todo) {
+    return ListView.builder(
+      itemCount: todo.length,
+      itemBuilder: (context, index) => ListTile(
+          title: Text(todo[index].title),
+          leading: Icon(todo[index].completed
+              ? Icons.check
+              : Icons.check_box_outline_blank),
+          tileColor: todo[index].completed ? Colors.green : Colors.white),
+    );
   }
 }
