@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Center(
       child: ElevatedButton(
           onPressed: () {
-            /// call bloc and send event
+            // TODO call bloc and trigger event
 
           },
           child: Text("Get TODO".toUpperCase())),
