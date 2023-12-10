@@ -10,20 +10,9 @@ import 'api_states.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   ApiBloc() : super(InitialState()) {
-    on<GetTodosEvent>(_getTodo);
+
   }
 
-  _getTodo(GetTodosEvent event, Emitter<ApiStates> emit) async {
-    emit(LoadingState());
-
-    try {
-      List<Todo> todos = await getTodos();
-      emit(SuccessTodoState(todos));
-    } catch (e) {
-      print(e);
-      emit(ErrorState());
-    }
-  }
 
   Future<List<Todo>> getTodos() async {
     List<Todo> todo = [];
@@ -31,6 +20,7 @@ class ApiBloc extends Bloc<ApiEvents, ApiStates> {
    await Future.delayed(Duration(seconds: 3),(){
 
     });
+
     Response response =
         await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
     if (response.statusCode == 200) {

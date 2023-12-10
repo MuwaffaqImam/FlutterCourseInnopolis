@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildBloc() {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
-      // TODO Implement BlocBuilder
+      // TODO Implement BlocBuilder and show states
       return Text("Nothing");
     });
   }
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget buildUserList(List<Todo> users) {
+  Widget buildUserList(List<Todo> todos) {
     // TODO Implement List
     return Text("Build list");
   }

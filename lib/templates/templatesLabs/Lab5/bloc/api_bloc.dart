@@ -9,7 +9,7 @@ import 'api_states.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   ApiBloc() : super(InitialState()) {
-    // TODO Implement on function
+    // TODO Implement "on" function
 
   }
 

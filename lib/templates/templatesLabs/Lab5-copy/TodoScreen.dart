@@ -51,16 +51,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildBloc() {
     return BlocBuilder<ApiBloc, ApiStates>(builder: (context, state) {
-      if (state is ErrorState) {
-        return Text("Error");
-      }
-      if (state is LoadingState) {
-        return Center(child: CircularProgressIndicator());
-      }
-      if (state is SuccessTodoState) {
-        List<Todo> todo = state.todos;
-        return buildUserList(todo);
-      }
+
+
       return buildInitialView();
     });
   }
@@ -70,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: ElevatedButton(
           onPressed: () {
             /// call bloc and send event
-            context.read<ApiBloc>().add(GetTodosEvent());
+            context.read<ApiBloc>().add(GetTodoEvent());
           },
           child: Text("Get TODO".toUpperCase())),
     );
@@ -80,8 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return ListView.builder(
       itemCount: todo.length,
       itemBuilder: (context, index) => ListTile(
-        title: Text(todo[index].title),
-      ),
+          title: Text(todo[index].title),
+          leading: Icon(todo[index].completed
+              ? Icons.check
+              : Icons.check_box_outline_blank),
+          tileColor: todo[index].completed ? Colors.green : Colors.white),
     );
   }
 }
