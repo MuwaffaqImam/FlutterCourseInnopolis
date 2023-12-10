@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,17 +10,27 @@ import 'api_states.dart';
 
 class ApiBloc extends Bloc<ApiEvents, ApiStates> {
   ApiBloc() : super(InitialState()) {
-    // TODO Implement on function
-
+    on<GetTodosEvent>(_getTodo);
   }
 
-  // TODO Implement the emitter function
+  _getTodo(GetTodosEvent event, Emitter<ApiStates> emit) async {
+    emit(LoadingState());
 
-
+    try {
+      List<Todo> todos = await getTodos();
+      emit(SuccessTodoState(todos));
+    } catch (e) {
+      print(e);
+      emit(ErrorState());
+    }
+  }
 
   Future<List<Todo>> getTodos() async {
     List<Todo> todo = [];
     print("connect to internet");
+   await Future.delayed(Duration(seconds: 3),(){
+
+    });
     Response response =
         await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
     if (response.statusCode == 200) {
