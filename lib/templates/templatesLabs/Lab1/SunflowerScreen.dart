@@ -56,8 +56,8 @@ Widget flowerDetails(BuildContext context) {
   );
 }
 
-/// Image work on Mobile https://newevolutiondesigns.com/images/freebies/yellow-wallpaper-12.jpg
-/// Image hat works on Web: https://ichef.bbci.co.uk/images/ic/640x360/p046xkbw.jpg
+/// Image work on Mobile https://wp-s.ru/wallpapers/11/18/389922058154790/yarkie-podsolnuxi-zhizneradostnyj-blik.jpg
+/// Image that works on Web: https://ichef.bbci.co.uk/images/ic/640x360/p046xkbw.jpg
 
 Widget imageGroup() {
   return Text('Replace with image group');
