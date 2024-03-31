@@ -48,11 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: Icon(Icons.add_comment_sharp),
         ),
-        body: isLoading
-            ? Center(child: CircularProgressIndicator())
-            : posts.isEmpty
-                ? buildEmptyView()
-                : buildUserList());
+        body: posts.isEmpty ? buildEmptyView() : buildUserList());
   }
 
   Widget buildEmptyView() {
