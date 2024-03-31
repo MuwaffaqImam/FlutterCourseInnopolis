@@ -2,8 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../Labs/templates/Lab4/AddPostScreenTemplate.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -44,7 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context, AddPostScreenTemplate.getRoute(context));
           },
           child: Icon(Icons.add_comment_sharp),
         ),
