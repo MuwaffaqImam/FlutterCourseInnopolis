@@ -68,10 +68,11 @@ class _MyHomePageState extends State<MyHomePage> {
   getPosts() async {
     //"https://jsonplaceholder.typicode.com/posts"
 
-    //  TODO  Implement here
+    //  TODO  Implement here connect to the API
   }
 
   buildUserList() {
+    //  TODO  Implement here populating the list
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
@@ -88,7 +89,7 @@ class Post {
   late String body;
 
   Post.fromJson(Map<String, dynamic> json) {
-    // Implement it
+    //  TODO  Implement here parsing JSON
   }
 
   @override
