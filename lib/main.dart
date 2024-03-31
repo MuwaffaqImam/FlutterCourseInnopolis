@@ -23,11 +23,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool isExpanded = true;
-  bool isCircle = true;
-  bool isVisible = true;
-  int count = 0;
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -45,8 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
         margin: EdgeInsets.all(20),
         duration: Duration(milliseconds: 450),
         width: screenWidth,
-        height: isExpanded ? screenHeight : 60,
-        // to 60 when click on it, to screen height when also click on it
+        height: screenHeight,
+        // to 0 when click on it, to screen height when also click on it
         color: Colors.indigo,
         child: Stack(
           children: [
@@ -56,18 +51,16 @@ class _MyHomePageState extends State<MyHomePage> {
               color: Colors.yellow,
               child: InkWell(
                 onTap: () {
-                  setState(() {
-                    isExpanded = !isExpanded;
-                  });
+                  setState(() {});
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Expanded(
                         child: Text(
-                      'Click to Expand',
-                      style: TextStyle(fontSize: 18),
-                    )),
+                          'Click to Expand',
+                          style: TextStyle(fontSize: 18),
+                        )),
                     Icon(Icons.keyboard_arrow_up),
                   ],
                 ),
@@ -102,25 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 150,
 
             /// ********** Do changes in child below ********** ///
-            child: InkWell(
-              onTap: () {
-                setState(() {
-                  isCircle = !isCircle;
-                });
-              },
-              child: Row(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: isCircle ? Colors.blue : Colors.red,
-                      shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
-                    ),
-                  ),
-                ],
-              ),
-            )),
+            child: Text('Change with Requested')),
       ),
     );
   }
@@ -136,37 +111,9 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 150,
 
             /// ********** Do changes in child below ********** ///
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FlutterLogo(
-                  style: changeFlutterLogo(),
-                  size: 100,
-                ),
-                IconButton(
-                    onPressed: () {
-                      setState(() {
-                        count++;
-                        if (count > 2) count = 0;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.refresh,
-                      size: 30,
-                    ))
-              ],
-            )),
+            child: Text('Change with Requested')),
       ),
     );
-  }
-
-  FlutterLogoStyle changeFlutterLogo() {
-    if (count == 0)
-      return FlutterLogoStyle.markOnly;
-    else if (count == 1) {
-      return FlutterLogoStyle.horizontal;
-    } else
-      return FlutterLogoStyle.stacked;
   }
 
   Widget showHide(double width) {
@@ -180,27 +127,7 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 150,
 
             /// ********** Do changes in child below ********** ///
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Visibility(
-                  visible: isVisible,
-                  child: Icon(
-                    Icons.favorite,
-                    color: Colors.red,
-                    size: 100,
-                  ),
-                ),
-                InkWell(
-                    onTap: () {
-                      setState(() {
-                        isVisible = !isVisible;
-                      });
-                    },
-                    child: Icon(!isVisible ? Icons.lock_open : Icons.lock,
-                        color: Colors.orange, size: 100)),
-              ],
-            )),
+            child: Text('Change with Requested')),
       ),
     );
   }

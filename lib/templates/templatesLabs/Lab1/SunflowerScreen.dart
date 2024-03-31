@@ -60,7 +60,8 @@ Widget flowerDetails(BuildContext context) {
 /// Image that works on Web: https://ichef.bbci.co.uk/images/ic/640x360/p046xkbw.jpg
 
 Widget imageGroup() {
-  return Text('Replace with image group');
+
+  return ElevatedButton(onPressed: (){}, child: child, style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric()),)
 }
 Widget titleGroup() {
   return Text('Replace with title group');

@@ -68,47 +68,14 @@ class _MyHomePageState extends State<MyHomePage> {
   getPosts() async {
     //"https://jsonplaceholder.typicode.com/posts"
 
-    setState(() {
-      isLoading=true;
-    });
-    await Future.delayed(Duration(seconds: 3), () {});
-    var response =
-        await http.get(Uri.parse("https://jsonplaceholder.typicode.com/posts"));
-    if (response.statusCode == 200) {
-      var list = jsonDecode(response.body) as List;
-
-      list.forEach((json) {
-        Post post = Post.fromJson(json);
-        posts.add(post);
-      });
-      print(posts);
-    } else {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('Error!!')));
-    }
-
-    setState(() {
-      isLoading = false;
-    });
+    //  TODO  Implement here
   }
 
   buildUserList() {
     return ListView.builder(
-      itemCount: posts.length,
+      itemCount: 10,
       itemBuilder: (context, index) {
-        return Column(
-          children: [
-            ListTile(
-              title: Text(posts[index].title),
-              subtitle: Text(posts[index].body),
-              leading: Icon(Icons.comment),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Divider()
-          ],
-        );
+        return Text("hello Lab 4");
       },
     );
   }
@@ -121,10 +88,7 @@ class Post {
   late String body;
 
   Post.fromJson(Map<String, dynamic> json) {
-    userId = json["userId"] ?? "";
-    id = json["id"] ?? "";
-    title = json["title"] ?? "";
-    body = json["body"] ?? "";
+    // Implement it
   }
 
   @override
