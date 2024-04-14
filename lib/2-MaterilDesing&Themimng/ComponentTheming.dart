@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.redAccent, size: 100),
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                  primary: Colors.indigo, onPrimary: Colors.amberAccent)),
+                  backgroundColor: Colors.indigo, foregroundColor: Colors.amberAccent)),
           textTheme: TextTheme(
             headline6: MyTextStyles.headline6,
             headline5: MyTextStyles.headline5,

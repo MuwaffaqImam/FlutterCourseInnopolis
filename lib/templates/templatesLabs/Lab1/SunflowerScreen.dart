@@ -60,15 +60,14 @@ Widget flowerDetails(BuildContext context) {
 /// Image that works on Web: https://ichef.bbci.co.uk/images/ic/640x360/p046xkbw.jpg
 
 Widget imageGroup() {
-
-  return ElevatedButton(onPressed: (){}, child: child, style: ElevatedButton.styleFrom(padding: EdgeInsets.symmetric()),)
+  return Text('Replace with Image group');
 }
 Widget titleGroup() {
   return Text('Replace with title group');
 }
 
 Widget iconGroup() {
-  return Text('Replace with icons group');;
+  return Text('Replace with icons group');
 }
 /// here is the text to copy
 ///Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s',

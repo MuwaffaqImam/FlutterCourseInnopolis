@@ -112,7 +112,7 @@ class _LanguageTranslatorViewState extends State<LanguageTranslatorView> {
               onPressed: _translateText,
               child: const Text('Translate'),
               style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(), primary: Colors.indigo),
+                  shape: StadiumBorder(), backgroundColor: Colors.indigo),
             ),
           ),
         ],

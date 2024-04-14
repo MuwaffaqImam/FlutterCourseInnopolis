@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             appBarTheme: AppBarTheme(backgroundColor: Colors.black),
             iconTheme: IconThemeData(color: Colors.amberAccent),
             elevatedButtonTheme: ElevatedButtonThemeData(
-                style: ElevatedButton.styleFrom(primary: Colors.green))),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green))),
         light: ThemeData(
           fontFamily: "Merriweather",
           bottomAppBarTheme: BottomAppBarTheme(color: Colors.blue),

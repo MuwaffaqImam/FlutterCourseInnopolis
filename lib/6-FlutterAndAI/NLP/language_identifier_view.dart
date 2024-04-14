@@ -85,7 +85,7 @@ class _LanguageIdentifierViewState extends State<LanguageIdentifierView> {
             child: const Text('Identify Language'),
             style: ElevatedButton.styleFrom(
                 shape: StadiumBorder(),
-                primary: Colors.green,
+                backgroundColor: Colors.green,
                 padding: EdgeInsets.symmetric(horizontal: 50)),
           ),
           const SizedBox(height: 15),
@@ -94,7 +94,7 @@ class _LanguageIdentifierViewState extends State<LanguageIdentifierView> {
             child: const Text('Identify possible languages'),
             style: ElevatedButton.styleFrom(
               shape: StadiumBorder(),
-              primary: Colors.indigo,
+              backgroundColor: Colors.indigo,
               padding: EdgeInsets.symmetric(horizontal: 25),
             ),
           ),

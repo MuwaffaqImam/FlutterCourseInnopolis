@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<String> getFuture(value) async {
     await Future.delayed(Duration(seconds: 2));
-    if (value == null) throw NullThrownError();
+    if (value == null) throw Exception();
     return Future.value("I'm data retured from future is $value");
   }
 
